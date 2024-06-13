@@ -18,7 +18,7 @@ class YAMRChainFactory:
     {questionnaire}
     </QUESTIONNAIRE>
 
-    """ + RECOMMENDATIONS_COUNT + "recommendations, NAMES AND YEARS OF PRODUCTION IN PARENTHESES ONLY, without quotation marks, separated by a '" + SEPARATOR + "':"
+    Provide only """ + RECOMMENDATIONS_COUNT + " recommendations, structure: (TITLE, PRODUCTION YEAR, ONE DIRECTOR, PRODUCTION STUDIO) IN PARENTHESES ONLY, without quotation marks, separated by a '""" + SEPARATOR + "':"
 
 
     OPENAI_MODEL_NAME = os.environ.get("OPENAI_MODEL_NAME")

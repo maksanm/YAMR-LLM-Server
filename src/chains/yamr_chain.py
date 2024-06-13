@@ -16,7 +16,7 @@ class YAMRChainFactory:
     {questionnaire}
     </QUESTIONNAIRE>
 
-    Three recommendations, NAMES AND YEARS OF PRODUCTION IN PARENTHESES ONLY, separated by a '""" + SEPARATOR + "':"
+    Three recommendations, NAMES AND YEARS OF PRODUCTION IN PARENTHESES ONLY, without quotation marks, separated by a '""" + SEPARATOR + "':"
 
     OPENAI_MODEL_NAME = os.environ.get("OPENAI_MODEL_NAME")
 

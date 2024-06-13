@@ -12,13 +12,16 @@ class YAMRChainFactory:
     SEPARATOR = "|"
     RECOMMENDATIONS_COUNT = os.environ.get("RECOMMENDATIONS_COUNT")
 
-    SYSTEM_PROMPT_TEMPLATE = "As a movie and series recommender, your role is to provide personalized recommendations. Based on the following questionnaire, which includes various questions related to the user’s movie preferences, humor, age, and personality traits, generate " + RECOMMENDATIONS_COUNT + """ tailored recommendations. These recommendations should be available on the specified Video-On-Demand (VOD) platforms mentioned by the user.
+    SYSTEM_PROMPT_TEMPLATE = "As a movie and series recommender engine, your role is to provide personalized recommendations. Based on the following questionnaire, which includes various questions related to the user’s movie preferences, humor, age, and personality traits, generate " + RECOMMENDATIONS_COUNT + """ tailored recommendations. These recommendations should be available on the specified Video-On-Demand (VOD) platforms mentioned by the user.
 
     <QUESTIONNAIRE>
     {questionnaire}
     </QUESTIONNAIRE>
 
-    Provide only """ + RECOMMENDATIONS_COUNT + " recommendations, structure: (TITLE, PRODUCTION YEAR, ONE DIRECTOR, PRODUCTION STUDIO) IN PARENTHESES ONLY, without quotation marks, separated by a '""" + SEPARATOR + "':"
+    Please provide exactly """ + RECOMMENDATIONS_COUNT + """ recommendations. Include IMDb rating numbers also. Don't generate any text which is not following the below response schema:
+
+    (TITLE, PRODUCTION YEAR, ONE DIRECTOR, PRODUCTION STUDIO, IMDb RATING)""" + SEPARATOR + "(TITLE, PRODUCTION YEAR, ONE DIRECTOR, PRODUCTION STUDIO, IMDb RATING)" + SEPARATOR + """(TITLE, PRODUCTION YEAR, ONE DIRECTOR, PRODUCTION STUDIO, IMDb RATING)
+    """
 
 
     OPENAI_MODEL_NAME = os.environ.get("OPENAI_MODEL_NAME")

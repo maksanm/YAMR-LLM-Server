@@ -29,7 +29,7 @@ async def redirect_root_to_docs():
 @app.post("/")
 async def generate_recommendations(input: YAMRChainInput):
     MAX_REQUEST_RETRY_COUNT = int(os.environ.get("MAX_REQUEST_RETRY_COUNT"))
-    RECOMMENDATIONS_COUNT = os.environ.get("RECOMMENDATIONS_COUNT")
+    RECOMMENDATIONS_COUNT = int(os.environ.get("RECOMMENDATIONS_COUNT"))
 
     recommendations = []
     i = 0

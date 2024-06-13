@@ -28,8 +28,17 @@ async def redirect_root_to_docs():
 
 @app.post("/")
 async def generate_recommendations(input: YAMRChainInput):
-    recommendations = await yamr_chain.ainvoke(input)
-    return recommendations.split(YAMRChainFactory.SEPARATOR)
+    MAX_REQUEST_RETRY_COUNT = int(os.environ.get("MAX_REQUEST_RETRY_COUNT"))
+    RECOMMENDATIONS_COUNT = os.environ.get("RECOMMENDATIONS_COUNT")
+
+    recommendations = []
+    i = 0
+    while len(recommendations) != RECOMMENDATIONS_COUNT and i < MAX_REQUEST_RETRY_COUNT:
+        response = await yamr_chain.ainvoke(input)
+        recommendations = response.split(YAMRChainFactory.SEPARATOR)
+        i += 1
+
+    return recommendations[-3:]
 
 if __name__ == "__main__":
     uvicorn.run(app,

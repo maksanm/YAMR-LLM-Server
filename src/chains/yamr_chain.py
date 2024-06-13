@@ -10,13 +10,16 @@ from langchain_core.runnables import RunnableParallel
 
 class YAMRChainFactory:
     SEPARATOR = "|"
-    SYSTEM_PROMPT_TEMPLATE = """As a movie and series recommender, your role is to provide personalized recommendations. Based on the following questionnaire, which includes various questions related to the user’s movie preferences, humor, age, and personality traits, generate three tailored recommendations. These recommendations should be available on the specified Video-On-Demand (VOD) platforms mentioned by the user.
+    RECOMMENDATIONS_COUNT = os.environ.get("RECOMMENDATIONS_COUNT")
+
+    SYSTEM_PROMPT_TEMPLATE = "As a movie and series recommender, your role is to provide personalized recommendations. Based on the following questionnaire, which includes various questions related to the user’s movie preferences, humor, age, and personality traits, generate " + RECOMMENDATIONS_COUNT + """ tailored recommendations. These recommendations should be available on the specified Video-On-Demand (VOD) platforms mentioned by the user.
 
     <QUESTIONNAIRE>
     {questionnaire}
     </QUESTIONNAIRE>
 
-    Three recommendations, NAMES AND YEARS OF PRODUCTION IN PARENTHESES ONLY, without quotation marks, separated by a '""" + SEPARATOR + "':"
+    """ + RECOMMENDATIONS_COUNT + "recommendations, NAMES AND YEARS OF PRODUCTION IN PARENTHESES ONLY, without quotation marks, separated by a '" + SEPARATOR + "':"
+
 
     OPENAI_MODEL_NAME = os.environ.get("OPENAI_MODEL_NAME")
 

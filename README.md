@@ -1,8 +1,6 @@
-# YAMR LLM Server
+# YAMR LLM Service
 
-This is a server project that uses the langchain framework to provide natural language processing services for the YAMR application.
-
-Please note that this is still a WIP and different bugs are definitely possible.
+This is a Python FastAPI server that uses the LangChain framework to provide natural language processing services for the YAMR application.
 
 ## Requirements
 
@@ -24,3 +22,7 @@ The `run.ps1` script is created to streamline the process of running the server 
 ```
 
 To recreate the virtual environment and reinstall all the packages, delete the existing `.venv` directory before executing the script.
+
+## Client Application
+
+You can access the React code for the client application [here](https://github.com/kbogumil01/YAMR_MVP).
